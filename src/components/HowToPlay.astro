@@ -1,18 +1,67 @@
 <section class="w-full px-20">
-    <h1>¿Como Jugar?</h1>
-    <div class="flex items-center justify-around w-full flex-col lg:flex-row">
-        <p class="text-center">
+    <h1 class="text-5xl py-10">¿Como Jugar?</h1>
+    <hr />
+    <div class="flex items-center gap-2 w-full flex-col lg:flex-row">
+        <p class="text-center mr-5">
             Configura y personaliza tu curriculum como quieras, tu eres el que
             busca laburo no yo, ingeniatelas
         </p>
-        <video src="/videos/curriculum.mp4" class="scale-75" loop autoplay
+        <video src="videos/curriculum.mp4" class="lg:w-1/2" loop autoplay muted
         ></video>
     </div>
-    <div class="flex items-center justify-around w-full flex-col lg:flex-row">
-        <video src="/videos/trabajo.mp4" class="scale-75" loop autoplay></video>
+    <hr />
+    <div class="flex items-center w-full flex-col lg:flex-row ">
+        <div
+            class=" h-[50vh] w-full carrousel flex [&_img]:h-full [&_img]:w-auto [&_img]:left-1/2 "
+        >
+            <img src="images/jobs/1.png"/>
+            <img src="images/jobs/2.png"/>
+            <img src="images/jobs/3.png"/>
+            <img src="images/jobs/4.png"/>
+        </div>
         <p class="text-center">
             Una vez que tengas tu curriculum listo, comienza a buscar trabajo,
             el que quieras da igual
         </p>
     </div>
 </section>
+
+<style>
+    .carrousel {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carrousel img {
+        position: absolute;
+        opacity: 0;
+        animation: carousel 16s infinite;
+    }
+
+    .carrousel img:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .carrousel img:nth-child(2) {
+        animation-delay: 4s;
+    }
+
+    .carrousel img:nth-child(3) {
+        animation-delay: 8s;
+    }
+
+    .carrousel img:nth-child(4) {
+        animation-delay: 12s;
+    }
+
+    @keyframes carousel {
+        0%, 20% {
+            opacity: 1;
+            transform: translateX(-50%);
+        }
+        25%, 100% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+    }
+</style>
