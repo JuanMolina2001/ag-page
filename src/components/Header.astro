@@ -1,0 +1,38 @@
+---
+import Github from "../svgs/github.astro";
+---
+
+<header
+    class="flex justify-center gap-5 hover:translate-y-0 transition-all fixed top-0 w-full z-50"
+>
+    <a
+        href="https://github.com/JuanMolina2001/agarra-la-pala"
+        target="_blank"
+        class="nes-pointer active:scale-95 hover:translate-y-1 transition-all"
+    >
+        <Github color="black" height="40" width="40" />
+    </a>
+    <a
+        href=""
+        target="_blank"
+        class="nes-pointer active:scale-95 hover:translate-y-1 transition-all pt-1"
+    >
+        <img
+            src="/images/itch.io.png"
+            height="40"
+            width="40"
+            alt="itch.io icon"
+            draggable="false"
+        />
+    </a>
+</header>
+<script>
+    const header = document.querySelector("header");
+    document.body.onscroll = () => {
+        if (window.scrollY > 0) {
+            header?.classList.add("-translate-y-5");
+        }else{
+            header?.classList.remove("-translate-y-5");
+        }
+    };
+</script>
