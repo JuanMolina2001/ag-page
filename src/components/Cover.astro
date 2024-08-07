@@ -1,12 +1,109 @@
- 
-<section class="flex flex-col h-screen items-center justify-center gap-20 bg-gray-200 text-white ">
-    <h1 class=" text-border-lg lg:text-6xl text-4xl text-center">
-        Agarra La Pala
-    </h1>
-    <p class="lg:text-3xl text-2xl text-center text-border-md">
-        Consigue trabajo, aunque sea en un videojuego
-    </p>
-    <a href="https://jmjmjmjmjm.itch.io/agarra-la-pala" target="_blank" class="nes-btn is-primary shadow-[7px_7px_0px_0px_rgba(0,0,0,0.75)]" style="color: white;">
-        Jugar Demo
-    </a>
+---
+import Carousel from "./Carousel.astro";
+import GameJolt from "../svgs/gamejolt.astro";
+---
+
+<section
+    class="flex flex-col lg:flex-row min-h-screen text-white relative w-full pt-20 gap-5"
+    id="inicio"
+>
+    <div class="px-3 lg:w-8/12 flex flex-col gap-7">
+        <h1 class="shadow-text text-4xl z-10 lg:text-start text-center">
+            Agarra La Pala
+        </h1>
+        <Carousel />
+        <p class="lg:text-xl">
+            Tu misión es convencer a una IA de que te contrate. Que raro no una
+            IA dando trabajo en ves de quitarlo. Itenta conseguir el trabajo de
+            tus sueños, o al menos el que te permita pagar la renta.
+        </p>
+    </div>
+    <div
+        class="flex-1 flex flex-col gap-3 justify-center items-center downloads"
+    >
+        <div
+            class="flex [&_button]:flex [&_button]:flex-col [&_button]:justify-center [&_button]:items-center focus:[&_button]:outline-none"
+        >
+            <button data-id="windows">
+                <img
+                    class="self-center"
+                    src="images/windows.png"
+                    height="40"
+                    width="40"
+                    alt="windows"
+                />
+                <span class="nes-badge flex justify-center scale-75">
+                    <span class="is-dark">Windows</span>
+                </span>
+            </button>
+
+            <button data-id="mac">
+                <img
+                    class="self-center"
+                    src="images/mac.png"
+                    height="40"
+                    width="40"
+                    alt="mac"
+                />
+                <span class="nes-badge flex justify-center scale-75">
+                    <span class="is-dark">Mac</span>
+                </span>
+            </button>
+            <button data-id="linux">
+                <img
+                    class="self-center"
+                    src="images/linux.png"
+                    height="40"
+                    width="40"
+                    alt="linux"
+                />
+                <span class="nes-badge flex justify-center scale-75">
+                    <span class="is-dark">Linux</span>
+                </span>
+            </button>
+        </div>
+        <div class="hidden flex-col lg:flex-row justify-around gap-3 windows w-full lg:w-fit px-3 lg:px-0">
+            <a
+                href="https://jmjmjmjmjm.itch.io/agarra-la-pala"
+                class="nes-btn lg:w-fit px-6 flex items-center justify-center"
+            >
+                <img src="images/itch.io.png" height="50" width="50" alt="" />
+            </a>
+            <a
+                href="https://gamejolt.com/games/agarra-la-pala/916774"
+                class="nes-btn lg:w-fit px-6 flex items-center justify-center"
+            >
+                <GameJolt height="50" width="50" />
+            </a>
+        </div>
+        <div class="notYet hidden">
+            <p>No disponible</p>
+        </div>
+    </div>
 </section>
+<script>
+    const buttons = Array.from(
+        document.querySelectorAll(".downloads [data-id]"),
+    ) as HTMLButtonElement[];
+    buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const id = button.dataset.id;
+            const windows = document.querySelector(
+                ".windows",
+            ) as HTMLDivElement;
+            const mac = document.querySelector(".mac") as HTMLDivElement;
+            const linux = document.querySelector(".linux") as HTMLDivElement;
+            const notYet = document.querySelector(".notYet") as HTMLDivElement;
+            windows.style.display = "none";
+            mac? mac.style.display = "none" : null;
+            linux? linux.style.display = "none" : null;
+            const target = document.querySelector(`.${id}`) as HTMLDivElement;
+            if(target){
+                target.style.display = "flex";
+                notYet.style.display = "none";
+            }else{
+                notYet.style.display = "flex";
+            }
+        });
+    });
+</script>

@@ -1,0 +1,60 @@
+---
+import Chevron from "../svgs/chevron.astro";
+---
+
+
+    <div class="w-full overflow-x-hidden relative shadow-[10px_10px_0px_0px_rgba(0,0,0,0.90)] border-black border-4 [&_video]:w-full [&_.carousel-item]:min-w-full">
+        <button
+            class="nes-btn absolute left-0 top-1/2 -translate-y-1/2 z-10 prev"
+        >
+            <Chevron color="gray" height="24" width="24" />
+        </button>
+        <div class="carousel-inner flex transition-all">
+            <div class="carousel-item active">
+                <video autoplay muted loop src="videos/curriculum.mp4"></video>
+            </div>
+            <div class="carousel-item">
+                <video autoplay muted loop src="videos/trabajo.mp4"></video>
+            </div>
+            <div class="carousel-item">
+                <video autoplay muted loop src="videos/entrevista.mp4"></video>
+            </div>
+        </div>
+        <button
+            class="nes-btn absolute right-0 top-1/2 -translate-y-1/2 z-10 next"
+        >
+            <Chevron
+                color="gray"
+                height="24"
+                width="24"
+                className="rotate-180"
+            />
+        </button>
+    </div>
+
+<script>
+    let currentIndex = 0;
+    function showNextImage() {
+        const carouselInner = document.querySelector(
+            ".carousel-inner",
+        ) as HTMLDivElement;
+        const items = document.querySelectorAll(".carousel-item");
+        currentIndex = (currentIndex + 1) % items.length;
+        const offset = -currentIndex * 100;
+        carouselInner.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(showNextImage, 10000);
+    const nextButton = document.querySelector(".next") as HTMLButtonElement;
+    nextButton.addEventListener("click", showNextImage);
+    const prevButton = document.querySelector(".prev") as HTMLButtonElement;
+    prevButton.addEventListener("click", () => {
+        const carouselInner = document.querySelector(
+            ".carousel-inner",
+        ) as HTMLDivElement;
+        const items = document.querySelectorAll(".carousel-item");
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        const offset = -currentIndex * 100;
+        carouselInner.style.transform = `translateX(${offset}%)`;
+    });
+</script>

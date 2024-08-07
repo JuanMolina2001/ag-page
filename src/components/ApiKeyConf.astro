@@ -1,0 +1,42 @@
+---
+import Panel from "./Panel.astro";
+---
+
+<section class="w-full  flex flex-col gap-10 active:[&_video]:scale-95" id="IA">
+    <h1 class="shadow-text text-4xl z-10 lg:text-start text-center">
+        Configuracion de la IA
+    </h1>
+    <Panel
+        title="Obten la API Key"
+        description="El juego utiliza Gemini asi que lo unico que ncesitas es una API Key, Tranquilo que no te cobran"
+        direction="right"
+    >
+        <div class="flex flex-col justify-center gap-5 w-1/2 ml-5">
+            <img
+                src="images/key.png"
+                class="w-full shadow-[10px_10px_0px_0px_rgba(0,0,0,0.90)] border-black border-4"
+                alt=""
+            />
+            <a
+                href="https://aistudio.google.com/app/u/1/apikey"
+                target="_blank"
+                class="nes-btn self-center"
+            >
+                Obtener API Key
+            </a>
+        </div>
+    </Panel>
+
+    <Panel
+        title="Guarda tu API Key"
+        description="Solo tienes que guardar tu API Key las variables de entorno como GOOGLE_GENERATIVE_AI_API_KEY"
+        direction="left"
+    >
+        <video
+            src="videos/save-key.mp4"
+            class="lg:w-1/2 border-4 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.90)] border-black mr-5 nes-pointer"
+            loop
+            autoplay
+            muted></video>
+    </Panel>
+</section>

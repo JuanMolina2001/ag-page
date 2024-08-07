@@ -1,0 +1,48 @@
+<div class="w-[300px] overflow-x-hidden relative">
+    <div class="jobs-inner flex transition-all [&_img]:w-full [&_.jobs-item]:min-w-full">
+        <div class="jobs-item active ">
+            <img
+                class="carrousel-image"
+                id="carrousel1"
+                src="images/jobs/1.png"
+            />
+        </div>
+        <div class="jobs-item">
+            <img
+                class="carrousel-image"
+                id="carrousel2"
+                src="images/jobs/2.png"
+            />
+        </div>
+        <div class="jobs-item">
+            <img
+                class="carrousel-image"
+                id="carrousel3"
+                src="images/jobs/3.png"
+            />
+        </div>
+        <div class="jobs-item">
+            <img
+                class="carrousel-image"
+                id="carrousel3"
+                src="images/jobs/4.png"
+            />
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    function showNextImage() {
+        const jobsInner = document.querySelector(
+            ".jobs-inner",
+        ) as HTMLDivElement;
+        const items = document.querySelectorAll(".jobs-item");
+        currentIndex = (currentIndex + 1) % items.length;
+        const offset = -currentIndex * 100;
+        jobsInner.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(showNextImage, 3000); // Cambia de imagen cada 3 segundos
+</script>

@@ -1,0 +1,36 @@
+---
+import Github from "../svgs/github.astro";
+---
+
+<div class="w-fit h-fit fixed z-50 top-1/2 -translate-y-1/2 gh">
+    <div
+        class="relative flex items-center hover:translate-x-1 transition-transform [&_.nes-badge]:opacity-0 [&_.nes-badge]:hover:opacity-100 gap-1 gh"
+    >
+        <a
+            href="https://github.com/JuanMolina2001/agarra-la-pala"
+            target="_blank"
+            class="nes-pointer active:scale-95 hover:text-current is-dark nes-btn p-0 bg-neutral-700 after:shadow-[inset_-4px_-4px_black] hover:bg-neutral-600 after:hover:shadow-[inset_-4px_-4px_#262626]"
+        >
+            <Github color="white" height="40" width="40" />
+        </a>
+
+        <div class="nes-badge absolute left-16">
+            <span class="is-dark">Github</span>
+        </div>
+    </div>
+</div>
+<style>
+    .gh .nes-badge {
+        transition: all 0.5s ease-in;
+    }
+</style>
+<script>
+    window.addEventListener("scroll", () => {
+        const gh = document.querySelector(".gh>div") as HTMLElement;
+        if (window.scrollY > 100) {
+            gh.classList.add("-translate-x-7");
+        } else {
+            gh.classList.remove("-translate-x-7");
+        }
+    });
+</script>

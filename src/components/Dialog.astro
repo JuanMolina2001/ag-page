@@ -1,0 +1,34 @@
+<dialog class="nes-dialog p-0" id="dialog">
+    <form method="dialog" class="*:flex  *>w-full [&_video]:w-full ">
+        <menu class="dialog-menu justify-end  bg-gray-100 border-b-4">
+            <button class="nes-btn h-fit text-xs scale-50">X</button>
+        </menu>
+        <p class="title"></p>
+        <div class="body justify-center p-3 bg-white"></div>
+   
+    </form>
+</dialog>
+
+<script >
+	Array.from(document.querySelectorAll('video')).forEach((video) => {
+		video.addEventListener('click', () => {
+            const screenW = window.innerWidth
+            if(screenW < 1024) return
+			const dialog = (document.querySelector('#dialog') as HTMLDialogElement)
+			const title = (document.querySelector('.title') as HTMLElement)
+			const body = (document.querySelector('.body') as HTMLElement)
+			if(dialog){
+				body.appendChild(video.cloneNode(true))
+                const newVideo = body.querySelector('video') as HTMLVideoElement
+                newVideo.classList.remove('nes-pointer')
+                newVideo.style.margin = '0'
+                newVideo.controls = true
+				dialog.showModal();
+                dialog.addEventListener('close', () => {
+                    body.innerHTML = ''
+                })
+			}
+			
+		});
+	});
+</script>
