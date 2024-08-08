@@ -17,7 +17,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[var(--primary)]">
+	<body >
 		<slot />
 	</body>
 </html>
@@ -27,6 +27,8 @@ const { title } = Astro.props;
 		src: url("/fonts/PressStart2P-Regular.ttf") format("truetype");
 	}
 	:root {
+		--primary: #497d8a;
+		--secondary: #222222;
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
 		--accent-dark: 49, 10, 101;
@@ -39,7 +41,11 @@ const { title } = Astro.props;
 	}
 	body {
 		font-family: "pixel", sans-serif;
-		color:white
+		color:white;
+		background-color: var(--secondary);
+	}
+	main {
+		background-color: var(--primary);
 	}
 	.shadow-text {
 		text-shadow: 5px 4px 0px #000000;

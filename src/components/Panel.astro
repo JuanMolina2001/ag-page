@@ -6,7 +6,7 @@ const { title, description, direction } = Astro.props;
     class="flex items-center gap-10 w-full flex-col lg:flex-row border-b-2 justify-around border-current py-10"
 >
     {direction === "left" && <slot />}
-    <div class="text-center flex flex-col gap-20 h-full max-w-[50%]">
+    <div class="text-center text-balance flex flex-col gap-20 h-full max-w-[50%]">
         <h1 class="text-3xl">{title}</h1>
         <p>
             {description}
